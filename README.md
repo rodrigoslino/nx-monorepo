@@ -1,108 +1,101 @@
----
-name: Monorepo with Nx
-slug: monorepo-nx
-description: Learn to implement a monorepo with a single Next.js site using Nx.
-framework: Next.js
-useCase: Documentation
-css: CSS
-deployUrl: https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/nx-monorepo&project-name=nx-monorepo&output-directory=dist%2Fapps%2Fapp%2F.next&build-command=npx%20nx%20build%20app%20--prod&repository-name=nx-monorepo
-relatedTemplates:
-  - monorepo-turborepo
-  - turborepo-next-basic
-  - turborepo-sveltekit-starter
----
+# Org
 
-# Nx Monorepo
+<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
-This is a monorepo example using [Nx](https://nx.dev) and a single Next.js site in [./apps/my-app](./apps/my-app).
+✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
 
-## Demo
+[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/next?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
 
-https://solutions-nx-monorepo.vercel.sh
+## Run tasks
 
-## How to Use
+To run the dev server for your app, use:
 
-You can choose from one of the following two methods to use this repository:
-
-### One-Click Deploy
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/examples/tree/main/solutions/nx-monorepo&project-name=nx-monorepo&output-directory=dist%2Fapps%2Fapp%2F.next&build-command=npx%20nx%20build%20app%20--prod&ignore-command=npx%20nx-ignore%20app&repository-name=nx-monorepo)
-
-## Getting Started
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example https://github.com/vercel/examples/tree/main/solutions/nx-monorepo nx-monorepo
+```sh
+npx nx dev my-app
 ```
 
-```bash
-yarn create next-app --example https://github.com/vercel/examples/tree/main/solutions/nx-monorepo nx-monorepo
+To create a production bundle:
+
+```sh
+npx nx build my-app
 ```
 
-```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/solutions/nx-monorepo nx-monorepo
+To see all available targets to run for a project, run:
+
+```sh
+npx nx show project my-app
 ```
 
-### Development server
+These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
-Run `npx nx serve app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
-### Build
+## Add new projects
 
-Run `npx nx build app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
 
-### Running unit tests
+Use the plugin's generator to create new projects.
 
-Run `npx nx test app` to execute the unit tests via [Jest](https://jestjs.io).
+To generate a new application, use:
 
-Run `npx nx affected:test` to execute the unit tests affected by a change.
-
-### Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=app` to generate a new component.
-
-### Generate an application
-
-Run `npx nx g @nrwl/react:app new-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-### Generate a library
-
-Run `npx nx g @nrwl/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@with-nx/mylib`.
-
-### Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-## Nx Cloud
-
-This example is configured to work out of the box with Nx Cloud. However, if deploying an existing project to Vercel - ensure:
-
-If using `@nrwl/nx-cloud@14.6.0` or above
-
-1. Set `NX_CACHE_DIRECTORY=/tmp/nx-cache`
-
-If using `@nrwl/nx-cloud@14.5.0` or below
-
-1. Set `NX_CACHE_DIRECTORY=/tmp/nx-cache`
-2. Set the `cacheDirectory` option for the `@nrwl/nx-cloud` runner in your `nx.json` to match the value of the `NX_CACHE_DIRECTORY` environment variable:
-
-```jsonc
-"runner": "@nrwl/nx-cloud",
-"options": {
-  // this must be the same value as `NX_CACHE_DIRECTORY`
-  "cacheDirectory": "/tmp/nx-cache"
-}
+```sh
+npx nx g @nx/next:app demo
 ```
 
-Visit [Nx Cloud](https://nx.app/) to learn more.
+To generate a new library, use:
+
+```sh
+npx nx g @nx/react:lib mylib
+```
+
+You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+
+[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Set up CI!
+
+### Step 1
+
+To connect to Nx Cloud, run the following command:
+
+```sh
+npx nx connect
+```
+
+Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+
+- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+### Step 2
+
+Use the following command to configure a CI workflow for your workspace:
+
+```sh
+npx nx g ci-workflow
+```
+
+[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Install Nx Console
+
+Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+
+[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Useful links
+
+Learn more:
+
+- [Learn more about this workspace setup](https://nx.dev/nx-api/next?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
+- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+And join the Nx community:
+- [Discord](https://go.nx.dev/community)
+- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
+- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
+- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)

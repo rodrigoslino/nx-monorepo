@@ -140,6 +140,13 @@ pre {
   color: rgba(255, 255, 255, 1);
   width: 66.666667%;
 }
+#middle-content {
+  align-items: flex-start;
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 1fr;
+  margin-top: 3.5rem;
+}
 #learning-materials {
   padding: 2.5rem 2rem;
 }
@@ -259,6 +266,15 @@ pre {
 }
 #nx-console svg {
   color: rgba(0, 122, 204, 1);
+}
+#nx-console-jetbrains {
+  margin-top: 2rem;
+}
+#nx-console-jetbrains:hover {
+  background-color: rgba(255, 49, 140, 1);
+}
+#nx-console-jetbrains svg {
+  color: rgba(255, 49, 140, 1);
 }
 #nx-repo:hover {
   background-color: rgba(24, 23, 23, 1);
@@ -386,5 +402,8 @@ summary svg {
   }
   #hero .logo-container {
     display: flex;
+  }
+  #middle-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
