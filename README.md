@@ -14,7 +14,7 @@ relatedTemplates:
 
 # Nx Monorepo
 
-This is a monorepo example using [Nx](https://nx.dev) and a single Next.js site in [./apps/app](./apps/app).
+This is a monorepo example using [Nx](https://nx.dev) and a single Next.js site in [./apps/my-app](./apps/my-app).
 
 ## Demo
 
