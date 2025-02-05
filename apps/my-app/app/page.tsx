@@ -1,4 +1,5 @@
 import styles from './page.module.css';
+import { MyClientComponent } from './components/my-client-component';
 
 export default function Index() {
   /*
@@ -15,6 +16,7 @@ export default function Index() {
               MY_SPECIFIC_VAR: <b>{process.env.MY_SPECIFIC_VAR}</b>
             </h1>
           </div>
+          <MyClientComponent />
 
           <div id="hero" className="rounded">
             <div className="text-container">
